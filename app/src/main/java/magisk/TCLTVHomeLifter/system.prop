@@ -1,0 +1,2 @@
+persist.tcl.installapk.enable=1
+persist.tcl.debug.installapk=1
