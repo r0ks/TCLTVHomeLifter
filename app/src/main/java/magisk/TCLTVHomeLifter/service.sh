@@ -6,7 +6,7 @@ echo "" > $logFile
 
 # 写入日志的功能
 log() {
-#    echo "$(date +'%Y-%m-%d %H:%M:%S') - $1" >> $logFile
+    echo "$(date +'%Y-%m-%d %H:%M:%S') - $1" >> $logFile
 }
 
 # 记录开始执行的时间
