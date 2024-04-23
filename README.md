@@ -24,6 +24,9 @@ TCL 自带的 `cyberui` 系统界面魔改太多，直接删除或隐藏都会�
 2. **Home 键绑定**：一旦绑定 Home 键后，进入 `emotnui` 就无法返回到 `cyberui`（这也算是达到了隐藏 `cyberui` 的目的）。
 3. **网络控制泛化**：使用 uid=1000 的其它系统应用也会被 iptables 拦截。
 
+## UPDATE 修改为使用magisk模块
+开机监测com.tcl.cyberui状态，focus后等待2.3s后（暂未有更好的方法），强行拉起emotnui，同时iptables拒绝系统应用联网
+
 ## 贡献
 
 欢迎通过 Pull Requests 或 Issues 提出改进建议或报告问题。

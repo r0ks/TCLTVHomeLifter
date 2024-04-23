@@ -21,6 +21,12 @@ check_desktop_current_focus() {
     return $?
 }
 
+# 允许连接ntp服务器同步时间
+accept_ntp_server_network() {
+    su -c "iptables -A OUTPUT -m owner --uid-owner 1000 -d 185.209.85.222 -p udp --dport 123 -j ACCEPT" >> $logFile 2>&1
+    su -c "iptables -A INPUT -m owner --uid-owner 1000 -s 185.209.85.222 -p udp --sport 123 -j ACCEPT" >> $logFile 2>&1
+}
+
 # 拒绝cyberui联网
 reject_cyberui_network() {
     su -c "iptables -A OUTPUT -m owner --uid-owner 1000 -j REJECT" >> $logFile 2>&1
@@ -59,6 +65,7 @@ while true; do
     log "Checking if desktop has resumed..."
     if check_desktop_resumed; then
         log "Desktop is resumed, performing actions..."
+        accept_ntp_server_network
         reject_cyberui_network
         ii=0
         while true; do
